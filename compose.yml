@@ -12,6 +12,6 @@ services:
       - /my-app/node_modules
     restart: unless-stopped
     ports:
-      - '3000:3000'
+      - '3333:3000'
     # npm run dev を実行
     command: npm run dev
