@@ -2,6 +2,6 @@
     "name": "kwus-devcontainer",
     "dockerComposeFile": "./compose.yml",
     "service": "app",
-    "workspaceFolder": "/my-app",
+    "workspaceFolder": "/workdir",
     "shutdownAction": "stopCompose"
 }
