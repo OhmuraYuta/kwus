@@ -7,7 +7,7 @@ services:
     container_name: kwus
     volumes:
       # ソースコードをマウントしてホットリロードを有効化
-      - .:/workdir/my-app
+      - .:/workdir
       # node_modules はホスト側と共有しない（ビルド時のものを使う）
       - /workdir/my-app/node_modules
     restart: unless-stopped
