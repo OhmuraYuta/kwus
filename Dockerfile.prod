@@ -1,5 +1,5 @@
 # 1. ビルダーステージ
-FROM node:18-alpine AS builder
+FROM node:lts-alpine AS builder
 WORKDIR /my-app
 COPY ./my-app/package*.json ./
 RUN npm install
@@ -7,7 +7,7 @@ COPY ./my-app .
 RUN npm run build
 
 # 2. 実行ステージ
-FROM node:18-alpine AS runner
+FROM node:lts-alpine AS runner
 WORKDIR /my-app
 ENV NODE_ENV=production
 
