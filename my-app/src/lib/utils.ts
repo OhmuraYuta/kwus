@@ -19,6 +19,35 @@ export function fetchGoogleSuggests(keyword) {
         const decodedData = iconv.decode(res.data, 'Shift_JIS');
         const parsedData = JSON.parse(decodedData);
         const suggestions = parsedData[1];
+        return suggestions;
+    }
+
+    return sendRequest();
+}
+
+export function fetchAmazonSuggests(keyword) {
+    const params = {
+        prefix: keyword,
+        alias: 'aps',
+        version: 3,
+        lop: 'ja_JP',
+        fb: 1,
+        'plain-mid': 6,
+        'client-info': 'serch-ui',
+        ni: 1,
+    }
+
+    const url = 'https://completion.amazon.co.jp/api/2017/suggestions';
+
+    const sendRequest = async () => {
+        const res = await axios.get(url, {params: params});
+        
+        const suggestions = res.data.suggestions;
+        let results = [];
+        suggestions.forEach(suggestion => {
+            results.push(suggestion.value);
+        });
+        return results;
     }
 
     return sendRequest();
