@@ -1,7 +1,7 @@
 import axios from "axios";
 import iconv from "iconv-lite";
 
-export function fetchGoogleSuggests(keyword) {
+export function fetchGoogleSuggests(keyword: string) {
     const params = {
         client: 'chrome',
         hl: 'ja',
@@ -25,7 +25,7 @@ export function fetchGoogleSuggests(keyword) {
     return sendRequest();
 }
 
-export function fetchAmazonSuggests(keyword) {
+export function fetchAmazonSuggests(keyword: string) {
     const params = {
         prefix: keyword,
         alias: 'aps',
@@ -43,8 +43,8 @@ export function fetchAmazonSuggests(keyword) {
         const res = await axios.get(url, {params: params});
         
         const suggestions = res.data.suggestions;
-        let results = [];
-        suggestions.forEach(suggestion => {
+        let results: string[] = [];
+        suggestions.forEach((suggestion: {value: string}) => {
             results.push(suggestion.value);
         });
         return results;
