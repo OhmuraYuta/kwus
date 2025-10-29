@@ -73,6 +73,9 @@ export function fetchRakutenSuggests(keyword: string | null) {
 }
 
 export function fetchYahooSuggests(keyword: string | null) {
+    if (keyword?.trim() === '') {
+        return [];
+    }
     const params = {
         query: keyword,
         appid: "dj0zaiZpPVkwMDJ1RHlqOEdwdCZzPWNvbnN1bWVyc2VjcmV0Jng9M2Y-",
