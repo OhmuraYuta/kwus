@@ -6,6 +6,8 @@ export default function GetSuggestsPage() {
   const [suggests, setSuggests] = useState({
     google: [],
     amazon: [],
+    rakuten: [],
+    yahoo: [],
   });
 
   useEffect(() => {
@@ -13,6 +15,8 @@ export default function GetSuggestsPage() {
       setSuggests({
         google: [],
         amazon: [],
+        rakuten: [],
+        yahoo: [],
       });
       return;
     }
@@ -39,7 +43,7 @@ export default function GetSuggestsPage() {
       onChange={handleInputChange}
       className='border mb-10'
       />
-      <div className="flex gap-x-2 w-4/5 m-auto">
+      <div className="flex flex-wrap gap-x-2 w-4/5 m-auto">
         <section className='flex-1'>
           <h2>google</h2>
           <ul className='border h-100'>
@@ -52,6 +56,22 @@ export default function GetSuggestsPage() {
           <h2>amazon</h2>
           <ul className='border h-100'>
             {suggests.amazon.map((suggest, index) => (
+              <li key={index}>{suggest}</li>
+            ))}
+          </ul>
+        </section>
+        <section className='flex-1'>
+          <h2>rakuten</h2>
+          <ul className='border h-100'>
+            {suggests.rakuten.map((suggest, index) => (
+              <li key={index}>{suggest}</li>
+            ))}
+          </ul>
+        </section>
+        <section className='flex-1'>
+          <h2>yahoo</h2>
+          <ul className='border h-100'>
+            {suggests.yahoo.map((suggest, index) => (
               <li key={index}>{suggest}</li>
             ))}
           </ul>
