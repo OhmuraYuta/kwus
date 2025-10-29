@@ -1,7 +1,7 @@
 import axios from "axios";
 import iconv from "iconv-lite";
 
-export function fetchGoogleSuggests(keyword: string) {
+export function fetchGoogleSuggests(keyword: string | null) {
     const params = {
         client: 'chrome',
         hl: 'ja',
@@ -25,7 +25,7 @@ export function fetchGoogleSuggests(keyword: string) {
     return sendRequest();
 }
 
-export function fetchAmazonSuggests(keyword: string) {
+export function fetchAmazonSuggests(keyword: string | null) {
     const params = {
         prefix: keyword,
         alias: 'aps',
