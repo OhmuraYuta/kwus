@@ -22,12 +22,24 @@ export default function GetSuggestsPage() {
       return;
     }
 
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     const url = `/api/suggest?keyword=${encodeURIComponent(keyword)}`;
-    fetch(url)
+    fetch(url, {signal})
       .then((res) => res.json())
       .then((data) => {
         setSuggests(data);
       })
+      .catch((err) => {
+        if (err.name !== 'AbortError') {
+          console.error(err);
+        }
+      });
+
+    return () => {
+      controller.abort();
+    };
 
   }, [keyword]);
 
