@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import DisplaySuggests from '@/components/DisplaySuggests';
+import Link from 'next/link';
 
 export default function GetSuggestsPage() {
   const [keyword, setKeyword] = useState('');
@@ -56,6 +57,9 @@ export default function GetSuggestsPage() {
       onChange={handleInputChange}
       className='border mb-10'
       />
+
+      <Link href="/deep-dive" className='block'>深堀り</Link>
+
       <DisplaySuggests suggests={suggests} />
     </div>
   );
