@@ -1,5 +1,6 @@
 import axios from "axios";
 import iconv from "iconv-lite";
+import { Platform } from "@/components/DeepDivePlatformSelector";
 
 export function fetchGoogleSuggests(keyword: string | null) {
     const params = {
@@ -92,4 +93,16 @@ export function fetchYahooSuggests(keyword: string | null) {
         }
     }
     return sendRequest();
+}
+
+export function getFuncByPlatform(platform: string | null) {
+    if (platform === 'amazon') {
+        return fetchAmazonSuggests;
+    } else if (platform === 'google') {
+        return fetchGoogleSuggests;
+    } else if (platform === 'rakuten') {
+        return fetchRakutenSuggests;
+    } else {
+        return fetchYahooSuggests;
+    }
 }
