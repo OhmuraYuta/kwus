@@ -1,11 +1,18 @@
 'use client';
 import Link from "next/link";
-
-import DeepDivePlatformSelector, {Platform} from "@/components/DeepDivePlatformSelector";
 import { useState } from "react";
+import DeepDivePlatformSelector, {Platform} from "@/components/DeepDivePlatformSelector";
+import DeepDiveSuggests from "@/components/DeepDiveSuggests";
+import DeepDiveKeywordInput from "@/components/DeepDiveKeywordInput";
+
+// type DeepDiveSuggests = {
+//     suggests: object[];
+//     set
+// };
 
 export default function DeepDivePage() {
     const [platform, setPlatform] = useState<Platform>('google');
+    const [suggests, setSuggests] = useState<object[]>([]);
     return (
         <div>
             <h1>深堀り</h1>
@@ -14,7 +21,14 @@ export default function DeepDivePage() {
                 platform={platform}
                 setPlatform={setPlatform}
             />
-            <p>選択 {platform}</p>
+            <DeepDiveKeywordInput
+                platform={platform}
+                setSuggests={setSuggests}
+            />
+            <DeepDiveSuggests
+                platform={ platform }
+                suggests={suggests}
+            />
         </div>
     )
 };
