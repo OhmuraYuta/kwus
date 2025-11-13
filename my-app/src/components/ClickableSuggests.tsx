@@ -14,8 +14,7 @@ export default function ClickableSuggests({ keyword, platform }: Props) {
 
   return (
     <div>
-      <button >btn</button>
-      <p>{platform}</p>
+      <p>選択：{platform}</p>
       <ul>
         {suggests.map((suggest, index) => (
           <li key={index}>
