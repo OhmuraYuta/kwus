@@ -25,9 +25,6 @@ export default function ClickableSuggests({ keyword, platform }: Props) {
           </li>
         ))}
       </ul>
-      <ul>
-
-      </ul>
     </div>
   )
 }
