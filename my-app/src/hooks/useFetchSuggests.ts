@@ -8,13 +8,24 @@ export function useFetchSuggests(keyword: string, platform: Platform) {
       setSuggests([]);
       return;
     }
-    async function main() {
-      const url = `/api/suggest?keyword=${encodeURIComponent(keyword)}&platform=${encodeURIComponent(platform)}`;
-      const res = await fetch(url);
-      const data = await res.json();
-      setSuggests(data);
-    }
-    main();
+
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const url = `/api/suggest?keyword=${encodeURIComponent(keyword)}&platform=${encodeURIComponent(platform)}`;
+    fetch(url, {signal})
+      .then((res) => res.json())
+      .then((data) => setSuggests(data))
+      .catch((err) => {
+        if (err.name !== 'AbortError') {
+          console.error(err);
+        }
+      });
+
+    return () => {
+      controller.abort();
+    };
+    
   }, [keyword, platform]);
   return suggests;
 }
