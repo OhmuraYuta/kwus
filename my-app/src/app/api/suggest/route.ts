@@ -6,8 +6,6 @@ export async function GET(request: NextRequest) {
     const keyword = searchParams.get('keyword');
     const platform = searchParams.get('platform');
 
-    console.log(platform)
-
     if (platform === null) {
         const gRes = await fetchGoogleSuggests(keyword);
         const aRes = await fetchAmazonSuggests(keyword);
