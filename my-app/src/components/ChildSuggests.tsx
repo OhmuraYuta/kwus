@@ -10,6 +10,7 @@ type Props = {
 export default function ChildSuggests({ suggest, platform }: Props) {
 
   const [suggests, setSuggests] = useState([]);
+  const [isDisplayed, setIsDisplayed] = useState(false);
 
   useEffect(() => {
     setSuggests([]);
@@ -22,14 +23,17 @@ export default function ChildSuggests({ suggest, platform }: Props) {
   }
 
   const handleClick = () => {
-    const url = `/api/suggest?keyword=${encodeURIComponent(suggest)}&platform=${encodeURIComponent(platform)}`;
-    fetchSuggests(url);
+    if (isDisplayed === false) {
+      const url = `/api/suggest?keyword=${encodeURIComponent(suggest)}&platform=${encodeURIComponent(platform)}`;
+      fetchSuggests(url);
+    }
+    setIsDisplayed(!isDisplayed);
   };
   return (
     <div>
       <button onClick={handleClick}>{suggest}</button>
       <ul className='ml-5'>
-        {
+        {isDisplayed ? 
           suggests.map((suggest, index) => (
             <li key={index}>
               <ChildSuggests
@@ -37,7 +41,7 @@ export default function ChildSuggests({ suggest, platform }: Props) {
                 platform={platform}
               />
             </li>
-          )) 
+          )) : ''
         }
       </ul>
     </div>
