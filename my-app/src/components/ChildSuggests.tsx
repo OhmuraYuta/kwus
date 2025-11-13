@@ -14,7 +14,7 @@ export default function ChildSuggests({ suggest, platform }: Props) {
 
   useEffect(() => {
     setSuggests([]);
-  }, [suggest]);
+  }, [suggest, platform]);
   
   async function fetchSuggests(url: string) {
     const res = await fetch(url);
