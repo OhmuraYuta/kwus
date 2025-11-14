@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import DisplaySuggests from '@/components/DisplaySuggests';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
+import KeywordInput from '@/components/KeywordInput';
 
 export default function GetSuggestsPage() {
   const [keyword, setKeyword] = useState('');
@@ -45,22 +46,15 @@ export default function GetSuggestsPage() {
 
   }, [keyword]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value);
-  };
-
   return (
     <div>
       <div className='w-fit mx-auto'>
         <Logo/>
       </div>
-      <input
-      type="text"
-      value={keyword}
-      onChange={handleInputChange}
-      className='border mb-10'
+      <KeywordInput
+        keyword={keyword}
+        setKeyword={setKeyword}
       />
-
       <Link href="/deep-dive" className='block'>深堀り</Link>
       <Link href="click">to click page</Link>
 
