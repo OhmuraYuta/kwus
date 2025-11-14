@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import DisplaySuggests from '@/components/DisplaySuggests';
 import Link from 'next/link';
+import Logo from '@/components/Logo';
 
 export default function GetSuggestsPage() {
   const [keyword, setKeyword] = useState('');
@@ -50,7 +51,9 @@ export default function GetSuggestsPage() {
 
   return (
     <div>
-      <h1>keyword</h1>
+      <div className='w-fit mx-auto'>
+        <Logo/>
+      </div>
       <input
       type="text"
       value={keyword}
