@@ -47,7 +47,7 @@ export default function GetSuggestsPage() {
   }, [keyword]);
 
   return (
-    <div>
+    <div className='relative flex flex-col h-screen'>
       <div className='w-fit mx-auto'>
         <Logo/>
       </div>
@@ -57,9 +57,11 @@ export default function GetSuggestsPage() {
           setKeyword={setKeyword}
         />
       </div>
-      <Link href="/deep-dive" className='block'>深堀り</Link>
+      <Link href="/deep-dive" className='block absolute top-3 left-3'>Deep dive</Link>
 
-      <DisplaySuggests suggests={suggests} />
+      <div className='grow mb-5 mt-5 w-9/10 mx-auto'>
+        <DisplaySuggests suggests={suggests} />
+      </div>
     </div>
   );
 };
