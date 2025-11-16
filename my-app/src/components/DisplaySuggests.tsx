@@ -18,11 +18,11 @@ type SuggestsProps = {
 
 function Suggests({ platform, suggests }: SuggestsProps) {
   return (
-    <section className='flex-1 flex flex-col h-full'>
-      <h2>{platform}</h2>
-      <ul className='border grow'>
+    <section className='w-[23%] flex flex-col h-full'>
+      <h2 className="text-center mb-1">{platform}</h2>
+      <ul className='border rounded-2xl p-3 overflow-auto grow'>
         {suggests.map((suggest, index) => (
-          <li key={index}>{suggest}</li>
+          <li key={index} className="whitespace-nowrap mb-1">{suggest}</li>
         ))}
       </ul>
     </section>
@@ -31,7 +31,7 @@ function Suggests({ platform, suggests }: SuggestsProps) {
 
 export default function DisplaySuggests({ suggests }: Props) {
   return (
-    <div className="flex flex-wrap gap-x-5 w-full m-auto h-full">
+    <div className="flex justify-between flex-wrap gap-x-5 w-full m-auto h-full">
       <Suggests
         platform="google"
         suggests={suggests.google}
