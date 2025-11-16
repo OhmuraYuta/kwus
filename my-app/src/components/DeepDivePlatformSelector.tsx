@@ -7,60 +7,55 @@ type Props = {
   setPlatform: (platform: Platform) => void;
 }
 
+type SelectorProps = {
+  platform: Platform;
+  platform_name: Platform;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function Selector({ platform, platform_name, handleChange }: SelectorProps) {
+  return (
+    <div>
+      <input
+        type="radio"
+        id={platform_name}
+        name="platform_name"
+        value={platform_name}
+        checked={platform === platform_name}
+        onChange={handleChange}
+        className="hidden peer"
+        />
+      <label htmlFor={platform_name} className="peer-checked:bg-white peer-checked:text-black py-0.5 px-1 rounded-full">{platform_name}</label>
+    </div>
+  )
+}
+
 export default function DeepDivePlatformSelector({platform, setPlatform}: Props) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPlatform(e.target.value as Platform);
   }
   return (
-    <div>
-      <fieldset>
-        <legend>プラットフォーム</legend>
-      </fieldset>
-      <div className="space-x-3">
-        <input
-        type="radio"
-        id="google"
-        name="platform"
-        value="google"
-        checked={platform === 'google'}
-        onChange={handleChange}
-        className="hidden"
-         />
-        <label htmlFor="google">google</label>
-
-        <input
-        type="radio"
-        id="amazon"
-        name="platform"
-        value="amazon"
-        checked={platform === 'amazon'}
-        onChange={handleChange}
-        className="hidden"
-         />
-        <label htmlFor="amazon">amazon</label>
-
-        <input
-        type="radio"
-        id="rakuten"
-        name="platform"
-        value="rakuten"
-        checked={platform === 'rakuten'}
-        onChange={handleChange}
-        className="hidden"
-         />
-        <label htmlFor="rakuten">rakuten</label>
-
-        <input
-        type="radio"
-        id="yahoo"
-        name="platform"
-        value="yahoo"
-        checked={platform === 'yahoo'}
-        onChange={handleChange}
-        className="hidden"
-         />
-        <label htmlFor="yahoo">yahoo</label>
-      </div>
+    <div className="space-x-3 flex w-fit">
+      <Selector
+        platform={platform}
+        platform_name="google"
+        handleChange={handleChange}
+      />
+      <Selector
+        platform={platform}
+        platform_name="amazon"
+        handleChange={handleChange}
+      />
+      <Selector
+        platform={platform}
+        platform_name="rakuten"
+        handleChange={handleChange}
+      />
+      <Selector
+        platform={platform}
+        platform_name="yahoo"
+        handleChange={handleChange}
+      />
     </div>
   )
 }
