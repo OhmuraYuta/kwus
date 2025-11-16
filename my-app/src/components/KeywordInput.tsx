@@ -7,16 +7,16 @@ type Props = {
   setKeyword: (keyword: string) => void;
 }
 
-export default function KeywordInput({keyword, setKeyword}: Props) {
+export default function KeywordInput({ keyword, setKeyword }: Props) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
-  };
-  return  (
+  }
+  return (
     <input
       type="text"
       value={keyword}
       onChange={handleInputChange}
-      className="border"
+      className="border-white w-full rounded-full bg-white text-black px-2 focus:outline-none"
     />
   )
 }
