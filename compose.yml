@@ -1,0 +1,17 @@
+services:
+  # 1. Next.js アプリケーション (開発モード)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kwus
+    volumes:
+      # ソースコードをマウントしてホットリロードを有効化
+      - .:/workdir
+      # node_modules はホスト側と共有しない（ビルド時のものを使う）
+      - /workdir/my-app/node_modules
+    restart: unless-stopped
+    ports:
+      - '3333:3000'
+    # npm run dev を実行
+    command: npm run dev

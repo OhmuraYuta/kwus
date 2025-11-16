@@ -1,0 +1,16 @@
+services:
+  # 1. Next.js アプリケーション
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: kwus
+    restart: unless-stopped
+    expose:
+      - '3000' # コンテナ内部のポート（Nginxからのみアクセス）
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    external: true
