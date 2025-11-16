@@ -51,10 +51,12 @@ export default function GetSuggestsPage() {
       <div className='w-fit mx-auto'>
         <Logo/>
       </div>
-      <KeywordInput
-        keyword={keyword}
-        setKeyword={setKeyword}
-      />
+      <div className='text-center w-2/5 mx-auto'>
+        <KeywordInput
+          keyword={keyword}
+          setKeyword={setKeyword}
+        />
+      </div>
       <Link href="/deep-dive" className='block'>深堀り</Link>
       <Link href="click">to click page</Link>
 
