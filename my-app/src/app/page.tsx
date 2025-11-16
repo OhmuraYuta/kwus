@@ -58,7 +58,6 @@ export default function GetSuggestsPage() {
         />
       </div>
       <Link href="/deep-dive" className='block'>深堀り</Link>
-      <Link href="click">to click page</Link>
 
       <DisplaySuggests suggests={suggests} />
     </div>
