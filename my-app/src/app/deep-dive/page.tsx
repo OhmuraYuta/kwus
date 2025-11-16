@@ -34,7 +34,7 @@ export default function ClickPage() {
         />
       </div>
 
-      <div className="mt-5 w-[40%] mx-auto">
+      <div className="mt-5 ml-60 overflow-x-auto">
         <ClickableSuggests
           keyword={keyword}
           platform={platform}

@@ -14,6 +14,7 @@ export default function ChildSuggests({ suggest, platform, allSuggests, setAllSu
 
   const [suggests, setSuggests] = useState<string[]>([]);
   const [isDisplayed, setIsDisplayed] = useState(false);
+  const [hasSuggests, setHasSuggests] = useState(true);
 
   useEffect(() => {
     setSuggests([]);
@@ -28,6 +29,10 @@ export default function ChildSuggests({ suggest, platform, allSuggests, setAllSu
     setAllSuggests(prevAllSuggests => {
       return new Set([...prevAllSuggests, ...difference]);
     });
+
+    if (difference.length === 0) {
+      setHasSuggests(false);
+    }
   }
 
   const handleClick = () => {
@@ -50,9 +55,12 @@ export default function ChildSuggests({ suggest, platform, allSuggests, setAllSu
     setIsDisplayed(!isDisplayed);
   };
   return (
-    <div>
-      <button onClick={handleClick} className='mb-2'>{suggest}</button>
-      <ul className='ml-9'>
+    <div className='w-fit'>
+      <div className='flex'>
+        <button onClick={handleClick} className='mb-2 whitespace-nowrap'>{suggest}</button>
+        {!hasSuggests ? <span className='ml-3 whitespace-nowrap text-sm text-gray-200'>もうありません</span> : null }
+      </div>
+      <ul className='ml-9 w-fit'>
         {isDisplayed ? 
           suggests.map((suggest, index) => (
             <li key={index}>
