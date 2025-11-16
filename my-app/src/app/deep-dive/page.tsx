@@ -34,10 +34,12 @@ export default function ClickPage() {
         />
       </div>
 
-      <ClickableSuggests
-        keyword={keyword}
-        platform={platform}
-      />
+      <div className="mt-5 w-[40%] mx-auto">
+        <ClickableSuggests
+          keyword={keyword}
+          platform={platform}
+        />
+      </div>
     </div>
   )
 }

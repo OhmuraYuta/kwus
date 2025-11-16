@@ -22,10 +22,9 @@ export default function ClickableSuggests({ keyword, platform }: Props) {
 
   return (
     <div>
-      <p>選択：{platform}</p>
       <ul>
         {suggests.map((suggest, index) => (
-          <li key={index}>
+          <li key={index} className="">
             <ChildSuggests
               suggest={suggest}
               platform={platform}

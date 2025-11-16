@@ -51,8 +51,8 @@ export default function ChildSuggests({ suggest, platform, allSuggests, setAllSu
   };
   return (
     <div>
-      <button onClick={handleClick}>{suggest}</button>
-      <ul className='ml-5'>
+      <button onClick={handleClick} className='mb-2'>{suggest}</button>
+      <ul className='ml-9'>
         {isDisplayed ? 
           suggests.map((suggest, index) => (
             <li key={index}>
