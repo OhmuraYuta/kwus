@@ -7,6 +7,7 @@ import Link from "next/link";
 import ClickableSuggests from "@/components/ClickableSuggests";
 import Logo from "@/components/Logo";
 import React from "react";
+import WordsFromItemPages from "@/components/WordsFromItemPages";
 
 export default function ClickPage() {
   const [keyword, setKeyword] = useState('');
@@ -34,11 +35,18 @@ export default function ClickPage() {
         />
       </div>
 
-      <div className="mt-5 ml-60 overflow-x-auto">
-        <ClickableSuggests
+      <div className="flex w-full mt-5">
+        <div className="ml-90 overflow-x-auto w-[50%] shrink-0">
+          <ClickableSuggests
+            keyword={keyword}
+            platform={platform}
+          />
+        </div>
+        {platform === 'rakuten' || platform === 'yahoo' ?
+        <WordsFromItemPages
           keyword={keyword}
           platform={platform}
-        />
+        /> : null }
       </div>
     </div>
   )
