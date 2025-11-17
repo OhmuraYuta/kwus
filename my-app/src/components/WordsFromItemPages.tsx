@@ -30,7 +30,7 @@ export default function WordsFromItemPages({ keyword, platform }: Props) {
 
   return (
     <div>
-      <h2>{platform}のページ</h2>
+      <h2>word count of {platform} pages</h2>
       <ul>
         {words.map((word, index) => (
           <li key={index}>{word[0]}: {word[1]}</li>
