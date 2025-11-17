@@ -44,8 +44,8 @@ async function wordsFromYahoo(keyword: string) {
   for (const item of items) {
     const name = item.name;
     const description = item.description;
-    const splitedName = name.split(' ');
-    const splitedDescription = description.split(' ');
+    const splitedName = name ? name.split(' ') : [];
+    const splitedDescription = description? description.split(' ') : [];
     word_list = [...word_list, ...splitedName, ...splitedDescription];
   }
   return count(word_list);
@@ -72,6 +72,7 @@ export async function GET(request: NextRequest) {
       const res = await wordsFromYahoo(keyword);
       return NextResponse.json(res);
     } catch (e) {
+      console.log(e)
       return NextResponse.json([]);
     }
   }
