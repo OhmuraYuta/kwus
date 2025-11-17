@@ -29,11 +29,11 @@ export default function WordsFromItemPages({ keyword, platform }: Props) {
   }, [debouncedKeyword, platform]);
 
   return (
-    <div>
+    <div className="w-full">
       <h2>word count of {platform} pages</h2>
-      <ul>
+      <ul className="overflow-x-auto">
         {words.map((word, index) => (
-          <li key={index}>{word[0]}: {word[1]}</li>
+          <li key={index} className="whitespace-nowrap">{word[0]}: {word[1]}</li>
         ))}
       </ul>
     </div>
