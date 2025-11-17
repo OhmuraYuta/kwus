@@ -35,18 +35,20 @@ export default function ClickPage() {
         />
       </div>
 
-      <div className="flex w-full mt-5">
-        <div className="ml-90 overflow-x-auto w-[50%] shrink-0">
+      <div className="flex justify-between w-full mt-5 mx-auto">
+        <div className="overflow-x-auto w-[60%] ml-[20%] shrink-0">
           <ClickableSuggests
             keyword={keyword}
             platform={platform}
           />
         </div>
-        {platform === 'rakuten' || platform === 'yahoo' ?
-        <WordsFromItemPages
-          keyword={keyword}
-          platform={platform}
-        /> : null }
+        <div className="w-[20%]">
+          {platform === 'rakuten' || platform === 'yahoo' ?
+          <WordsFromItemPages
+            keyword={keyword}
+            platform={platform}
+          /> : null }
+        </div>
       </div>
     </div>
   )
