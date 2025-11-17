@@ -7,6 +7,7 @@ import Link from "next/link";
 import ClickableSuggests from "@/components/ClickableSuggests";
 import Logo from "@/components/Logo";
 import React from "react";
+import WordsFromItemPages from "@/components/WordsFromItemPages";
 
 export default function ClickPage() {
   const [keyword, setKeyword] = useState('');
@@ -40,6 +41,11 @@ export default function ClickPage() {
           platform={platform}
         />
       </div>
+
+      <WordsFromItemPages
+        keyword={keyword}
+        platform={platform}
+      />
     </div>
   )
 }
